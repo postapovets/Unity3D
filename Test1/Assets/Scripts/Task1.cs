@@ -8,6 +8,7 @@ public class Task1 : MonoBehaviour
 	float timer1 = 0;
 	bool msgPrinted = false;
 	public GameObject pers;
+	GameObject obj;
 	public static float GameTimer = 20;
 	public static int Counter = 0;
 
@@ -27,13 +28,14 @@ public class Task1 : MonoBehaviour
 				randomTime = Random.Range (1f, 3f); // generate new random timer
 				timer1 = 0;
 
-				pers = (GameObject)Instantiate (pers, new Vector3 (Random.Range (-5f, 5f), 
+				obj = (GameObject)Instantiate (pers, new Vector3 (Random.Range (-5f, 5f), 
 					                            Random.Range (-5f, 5f), 
 					                            Random.Range (-5f, 5f)), new Quaternion (0f, 0f, 0f, 0f));
-				pers.transform.parent = gameObject.transform;
+				obj.transform.parent = gameObject.transform;
 			}
 		} else if (! msgPrinted) {  // print message one time
-			Destroy (gameObject);
+			if (gameObject != null)
+				Destroy (gameObject);
 			print ("Counter = " + Counter);
 			msgPrinted = true;
 		}

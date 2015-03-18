@@ -37,7 +37,8 @@ public class Behaivor : MonoBehaviour
 	{
 		if (GetComponent<SpriteRenderer> ().sprite.name == "spongebob") {
 			Task1.Counter += 3;
-			Destroy (gameObject);
+			if (gameObject != null)
+				Destroy (gameObject);
 		} else {
 			Task1.Counter--;
 		}
