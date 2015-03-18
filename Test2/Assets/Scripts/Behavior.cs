@@ -9,8 +9,8 @@ public class Behavior : MonoBehaviour
 	int j;
 	void Start ()
 	{
-		i = int.Parse (name.Substring (6, 1));
-		j = int.Parse (name.Substring (8, 1));
+		i = int.Parse (name [6].ToString ());
+		j = int.Parse (name [8].ToString ());
 	}
 	
 	// Update is called once per frame

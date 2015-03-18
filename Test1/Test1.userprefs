@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Test2\Assets\Scripts\Task2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behaivor.cs">
     <Files>
-      <File FileName="..\Test2\Assets\Scripts\Task2.cs" Line="15" Column="4" />
+      <File FileName="Assets/Scripts/Task1.cs" Line="34" Column="8" />
+      <File FileName="Assets/Scripts/Behaivor.cs" Line="40" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
