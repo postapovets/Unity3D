@@ -8,31 +8,30 @@ public class Task3 : MonoBehaviour
 	// Use this for initialization
 	int dimX = 15;
 	int dimY = 25;
-	Color[] colors = {Color.white, Color.green, Color.red, Color.yellow, Color.cyan};
+	public Color[] colors = {Color.white, Color.green, Color.red, Color.yellow, Color.cyan};
 
 	public GameObject circle;
-
-	//TODO: remove static fields
+	public int BubblesToKill = 2;
+	
 	public GameObject[,] gameField;
-	GameObject[] pGroups;
 	List<GameObject> selectedObj = new List<GameObject> ();
-	public int score = 0;
+	int score = 0;
 	int currentScore = 0;
 
 	void Start ()
 	{
 		gameField = new GameObject[dimX, dimY];
-		pGroups = new GameObject[dimX];
+		GameObject p = new GameObject ();
 
 		for (int i = 0; i < dimX; i++) {
-			pGroups [i] = new GameObject ("p" + i);
-			pGroups [i].transform.position = new Vector3 (i, 0, 0);
-			pGroups [i].transform.parent = transform.root.transform;
+			p = new GameObject ("p" + i);
+			p.transform.position = new Vector3 (i, 0, 0);
+			p.transform.parent = transform.root.transform;
 			for (int j = 0; j < dimY; j++) {
 				gameField [i, j] = (GameObject)Instantiate (circle, new Vector3 (i, j, 0f), new Quaternion (0, 0, 0, 0));
 				gameField [i, j].name = string.Format ("c_{0:00}_{1:00}", i, j);
 				gameField [i, j].GetComponent<SpriteRenderer> ().color = colors [Random.Range (0, 5)];
-				gameField [i, j].transform.parent = pGroups [i].transform;
+				gameField [i, j].transform.parent = p.transform;
 			}
 		}
 	}
@@ -115,10 +114,10 @@ public class Task3 : MonoBehaviour
 		}
 	}
 
-	public void DestroyBubbles (int i, int j, Color color)
+	public void DestroyBubbles (GameObject obj)
 	{
-		SelectBubbles (i, j, color);
-		if (selectedObj.Count > 1) {
+		SelectBubbles (int.Parse (obj.name.Substring (2, 2)), int.Parse (obj.name.Substring (5, 2)), obj.GetComponent<SpriteRenderer> ().color);
+		if (selectedObj.Count >= BubblesToKill) {
 			score += selectedObj.Count; // update score text
 			foreach (GameObject item in selectedObj) {
 				int itemX = int.Parse (item.name.Substring (2, 2));
@@ -126,8 +125,8 @@ public class Task3 : MonoBehaviour
 				Destroy (item);
 				gameField [itemX, itemY] = null;
 			}
-			selectedObj.Clear ();
 			SortField ();
 		}
+		selectedObj.Clear ();
 	}
 }
