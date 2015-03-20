@@ -14,6 +14,7 @@ public class Task3 : MonoBehaviour
 
 	//TODO: remove static fields
 	public GameObject[,] gameField;
+	GameObject[] pGroups;
 	List<GameObject> selectedObj = new List<GameObject> ();
 	public int score = 0;
 	int currentScore = 0;
@@ -21,14 +22,17 @@ public class Task3 : MonoBehaviour
 	void Start ()
 	{
 		gameField = new GameObject[dimX, dimY];
+		pGroups = new GameObject[dimX];
+
 		for (int i = 0; i < dimX; i++) {
-			GameObject p = new GameObject ("p" + i);
-			p.transform.parent = transform.root.transform;
+			pGroups [i] = new GameObject ("p" + i);
+			pGroups [i].transform.position = new Vector3 (i, 0, 0);
+			pGroups [i].transform.parent = transform.root.transform;
 			for (int j = 0; j < dimY; j++) {
 				gameField [i, j] = (GameObject)Instantiate (circle, new Vector3 (i, j, 0f), new Quaternion (0, 0, 0, 0));
 				gameField [i, j].name = string.Format ("c_{0:00}_{1:00}", i, j);
 				gameField [i, j].GetComponent<SpriteRenderer> ().color = colors [Random.Range (0, 5)];
-				gameField [i, j].transform.parent = p.transform;
+				gameField [i, j].transform.parent = pGroups [i].transform;
 			}
 		}
 	}
@@ -38,6 +42,16 @@ public class Task3 : MonoBehaviour
 		if (score > currentScore) {
 			currentScore = score;
 			transform.root.transform.FindChild ("TextScore").transform.GetComponent<TextMesh> ().text = "Score: " + currentScore;
+		}
+		for (int i = dimX-1; i > 0; i--) {
+			if (gameField [i, 0] != null) {
+				if (gameField [i - 1, 0] != null) {
+					Vector3 a = gameField [i - 1, 0].transform.parent.transform.position;
+					Vector3 b = gameField [i, 0].transform.parent.transform.position;
+					b -= new Vector3 (1, 0, 0);
+					gameField [i - 1, 0].transform.parent.transform.position = Vector3.MoveTowards (a, b, 0.03f);
+				}
+			}
 		}
 	}
 
@@ -66,7 +80,7 @@ public class Task3 : MonoBehaviour
 		while (swapped) {
 			swapped = false;
 			for (int i = 0; i < dimX - 1; i++) {
-				if (gameField [i + 1, 0] == null) {
+				if (gameField [i + 1, 0] == null && gameField [i, 0] != null) {
 					for (int j = 0; j < dimY; j++) {
 						gameField [i + 1, j] = gameField [i, j];
 						gameField [i, j] = null;
@@ -74,22 +88,12 @@ public class Task3 : MonoBehaviour
 							gameField [i + 1, j].name = string.Format ("c_{0:00}_{1:00}", i + 1, j);
 					}
 					swapped = true;
-					if (gameField [i + 1, 0] != null)
-						gameField [i + 1, 0].transform.parent.transform.position += new Vector3 (1, 0, 0);
+					//  if (gameField [i + 1, 0] != null) {
+					//gameField [i + 1, 0].transform.parent.transform.position += new Vector3 (1, 0, 0);
+					
 				}
 			}
 		}
-		string str = "";
-		for (int i = 0; i < dimX; i++) {
-			for (int j = 0; j < dimY; j++) {
-				if (gameField [i, j] == null)
-					str += "0 ";
-				else
-					str += "1 ";
-			}
-			str += "\n";
-		}
-		print (str);
 	}
 
 	void SelectBubbles (int i, int j, Color color)
@@ -114,7 +118,7 @@ public class Task3 : MonoBehaviour
 	public void DestroyBubbles (int i, int j, Color color)
 	{
 		SelectBubbles (i, j, color);
-		if (selectedObj.Count > 0) {
+		if (selectedObj.Count > 1) {
 			score += selectedObj.Count; // update score text
 			foreach (GameObject item in selectedObj) {
 				int itemX = int.Parse (item.name.Substring (2, 2));
