@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class Task7 : MonoBehaviour
 {
 	public GameObject[] PerFabs;
 	string str = "";
-	public Dictionary<string, GameObject> Objs = new Dictionary<string, GameObject> ();
 	// Use this for initialization
 	void Start ()
 	{
