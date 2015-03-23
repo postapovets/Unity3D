@@ -37,16 +37,16 @@ public class Shape : MonoBehaviour
 		}
 		if (GameObject.Find ("/Unsorted").transform.childCount == 0) {
 			foreach (Transform child in GameObject.Find ("/Circles").transform) {
-				if (child.tag != "circle")
-					Debug.LogWarning ("Object " + child.name + " is not a circle.");
+				if (child.tag != "circle") 
+					child.GetComponent<SpriteRenderer> ().color = Color.red;
 			}
 			foreach (Transform child in GameObject.Find ("/Cubes").transform) {
-				if (child.tag != "cube")
-					Debug.LogWarning ("Object " + child.name + " is not a cube.");
+				if (child.tag != "cube") 
+					child.GetComponent<SpriteRenderer> ().color = Color.red;
 			}
 			foreach (Transform child in GameObject.Find ("/Triangles").transform) {
-				if (child.tag != "triangle")
-					Debug.LogWarning ("Object " + child.name + " is not a triangle.");
+				if (child.tag != "triangle") 
+					child.GetComponent<SpriteRenderer> ().color = Color.red;
 			}
 		}
 	}
