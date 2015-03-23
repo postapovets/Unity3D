@@ -17,5 +17,6 @@ public class MoveCamera : MonoBehaviour
 		if (Input.GetMouseButton (0)) {
 			transform.position += new Vector3 (Input.GetAxis ("Mouse X"), Input.GetAxis ("Mouse Y"), 0);
 		}
+		transform.root.Find ("/Cube").transform.position += new Vector3 (Input.GetAxis ("MyHorizontal"), Input.GetAxis ("MyVertical"), 0);
 	}
 }
