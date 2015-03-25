@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../Task12/Assets/scrCamera.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scrCamera.cs">
     <Files>
-      <File FileName="../Task12/Assets/scrCamera.cs" Line="26" Column="1" />
+      <File FileName="Assets/scrCamera.cs" Line="26" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

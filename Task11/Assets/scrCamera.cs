@@ -17,7 +17,6 @@ public class scrCamera : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit rcHit;
 			if (Physics.Raycast (ray, out rcHit, 20f)) {
-
 				rcHit.collider.GetComponent<Player> ().destColor = new Color (Random.Range (0, 1f), Random.Range (0, 1f), Random.Range (0, 1f));
 			}
 		}
