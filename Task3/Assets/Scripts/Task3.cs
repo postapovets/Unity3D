@@ -122,7 +122,8 @@ public class Task3 : MonoBehaviour
 			foreach (GameObject item in selectedObj) {
 				int itemX = int.Parse (item.name.Substring (2, 2));
 				int itemY = int.Parse (item.name.Substring (5, 2));
-				Destroy (item);
+				item.GetComponent<Light> ().enabled = true;
+				Destroy (item, 0.2f);
 				gameField [itemX, itemY] = null;
 			}
 			SortField ();
