@@ -3,22 +3,29 @@ using System.Collections;
 
 public class Shot : MonoBehaviour
 {
-	private float shotTime;
 	public float Speed;
 	public Vector2 Direction;
-
+	Vector3 startPoint;
+	
 	// Use this for initialization
 	void Start ()
 	{
-		shotTime = Time.time;
-		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (1f * Speed, 0);
-
+		startPoint = transform.position;
+		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (Direction.x * Speed, Direction.y * Speed);
 	}
 
 	void FixedUpdate ()
 	{
-		if (Time.time > (shotTime + 0.5f))
+		if (Vector3.Distance (transform.position, startPoint) > 1) {
+			Destroy (gameObject);
+		}
+	}
+	void OnTriggerEnter2D (Collider2D other)
+	{
+		if (other.tag == "Furniture") {
+			Destroy (other.gameObject);
+		}
+		if (other.tag != "Player")
 			Destroy (gameObject);
 	}
-
 }
