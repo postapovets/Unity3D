@@ -5,6 +5,7 @@ public class Shot : MonoBehaviour
 {
 	public float Speed;
 	public Vector2 Direction;
+	public Rigidbody2D Owner;
 	Vector3 startPoint;
 	
 	// Use this for initialization
@@ -24,6 +25,10 @@ public class Shot : MonoBehaviour
 	{
 		if (other.tag == "Furniture") {
 			Destroy (other.gameObject);
+		}
+		if (other.tag == "Alien") {
+			Destroy (other.gameObject);
+			Owner.GetComponent<scrPlayer> ().Score += 50;
 		}
 		if (other.tag != "Player")
 			Destroy (gameObject);
