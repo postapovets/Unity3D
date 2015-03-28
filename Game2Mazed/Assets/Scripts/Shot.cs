@@ -30,7 +30,7 @@ public class Shot : MonoBehaviour
 			Destroy (other.gameObject);
 			Owner.GetComponent<scrPlayer> ().Score += 50;
 		}
-		if (other.tag != "Player")
+		if (other.tag != "Player" && other.tag != "Sensor")
 			Destroy (gameObject);
 	}
 }
