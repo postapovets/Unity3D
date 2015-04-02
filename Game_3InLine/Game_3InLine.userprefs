@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameField.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameField.cs" Line="40" Column="6" />
+      <File FileName="Assets/Scripts/GameField.cs" Line="71" Column="24" />
       <File FileName="../Task3/Assets/Scripts/Task3.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -11,6 +11,13 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
               <Node name="GameField.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="Pixelplacement" expanded="True">
+                <Node name="iTween" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
