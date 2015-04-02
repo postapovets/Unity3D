@@ -9,6 +9,7 @@ public class GameField : MonoBehaviour
 	public int dimY;
 	public GameObject perfabCircle;
 	public Color[] colors = {Color.white, Color.green, Color.red, Color.yellow, Color.cyan};
+	public float AnimationSpeed = 1;
 
 	GameObject[,] gameField;
 	GameObject selected1 = null;
@@ -34,26 +35,28 @@ public class GameField : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, 100f)) {
 				if (hit.collider.tag == "circle") {
-					if (selected1 == hit.collider.gameObject)
-						stopAnimation ();
-					iTween.RotateAdd (hit.collider.gameObject, iTween.Hash ("x", 360, "time", 2, "looptype", iTween.LoopType.loop, "easetype", iTween.EaseType.linear));
+					if (selected1 == hit.collider.gameObject) {
+						iTween.Stop (selected1);
+						selected1 = null;
+						return;
+					}
 					if (selected1 == null) {
 						selected1 = hit.collider.gameObject;                                          
+						iTween.RotateAdd (selected1, iTween.Hash ("x", 360, "time", AnimationSpeed * 4, "looptype", iTween.LoopType.loop, "easetype", iTween.EaseType.linear));
 					} else {
 						if (Vector3.Distance (selected1.transform.position, hit.collider.transform.position) == 1) {
 							// stop rotating animation
 							iTween.Stop (selected1);
-							iTween.Stop (hit.collider.gameObject);
 
 							Vector3[] path = new Vector3[] {
 							new Vector3 (selected1.transform.position.x, selected1.transform.position.y, selected1.transform.position.z - 1),
 							hit.collider.transform.position};
-							iTween.MoveTo (selected1, iTween.Hash ("path", path, "easetype", iTween.EaseType.linear));
+							iTween.MoveTo (selected1, iTween.Hash ("path", path, "easetype", iTween.EaseType.linear, "time", AnimationSpeed));
 
 							path = new Vector3[] {
 							new Vector3 (hit.collider.transform.position.x, hit.collider.transform.position.y, hit.collider.transform.position.z + 1),
 							selected1.transform.position};
-							iTween.MoveTo (hit.collider.gameObject, iTween.Hash ("path", path, "easetype", iTween.EaseType.linear, 
+							iTween.MoveTo (hit.collider.gameObject, iTween.Hash ("path", path, "easetype", iTween.EaseType.linear, "time", AnimationSpeed,
 							                                                     "oncomplete", "DropCirles", "oncompletetarget", hit.collider.transform.parent.gameObject));
 							// update array
 							for (int i = 0; i < dimX; i++) {
@@ -65,9 +68,9 @@ public class GameField : MonoBehaviour
 								}
 							}
 						} else {
-							stopAnimation ();
+							iTween.Stop (selected1);
+							selected1 = null;
 						}
-						iTween.Stop (selected1);
 						selected1 = null;
 					}
 				}
@@ -144,7 +147,8 @@ public class GameField : MonoBehaviour
 					gameField [i, j] = (GameObject)Instantiate (perfabCircle, new Vector3 (i, j, 0), new Quaternion (0, 0, 0, 0));
 					gameField [i, j].transform.parent = gameObject.transform;
 					gameField [i, j].GetComponent<MeshRenderer> ().material.color = colors [Random.Range (0, 5)];
-					iTween.ScaleFrom (gameField [i, j], iTween.Hash ("scale", new Vector3 (0.1f, 0.1f, 0.1f), "oncomplete", "DropCirles", "oncompletetarget", gameField [i, j].transform.parent.gameObject));
+					iTween.ScaleFrom (gameField [i, j], iTween.Hash ("scale", new Vector3 (0.1f, 0.1f, 0.1f), "time", AnimationSpeed,
+					                                                 "oncomplete", "DropCirles", "oncompletetarget", gameField [i, j].transform.parent.gameObject));
 				}
 			}
 		}

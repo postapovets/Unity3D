@@ -1,28 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameField.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameField.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameField.cs" Line="71" Column="24" />
-      <File FileName="../Task3/Assets/Scripts/Task3.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameField.cs" Line="150" Column="119" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\Alien.cs" Line="1" Column="1" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\Mover.cs" Line="1" Column="1" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\Shot.cs" Line="1" Column="1" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\SceneGenerator.cs" Line="1" Column="1" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\scrPlayer.cs" Line="1" Column="1" />
+      <File FileName="..\Game2Mazed\Assets\Scripts\alienSensor.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="GameField.cs" selected="True" />
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Plugins" expanded="True">
-              <Node name="Pixelplacement" expanded="True">
-                <Node name="iTween" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
