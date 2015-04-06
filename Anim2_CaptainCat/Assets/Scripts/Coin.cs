@@ -13,6 +13,7 @@ public class Coin : MonoBehaviour
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.tag == "Player") {
+			other.GetComponent<Cat> ().CollectCoin ();
 			Vector3[] path = new Vector3[] {
 				new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z - 1),
 				new Vector3 (transform.position.x, transform.position.y, transform.position.z - 1),

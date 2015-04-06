@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Cat : MonoBehaviour
 {
@@ -12,12 +13,19 @@ public class Cat : MonoBehaviour
 	Animator myAnim;
 	bool directionR = true;
 
+	public int health = 3;
+	public Text txtHealth;
+	public int score = 0;
+	public Text txtScore;
 
 	// Use this for initialization
 	void Start ()
 	{
 		myBody = GetComponent<Rigidbody2D> ();
 		myAnim = GetComponent<Animator> ();
+		txtHealth.text = "Health: " + health;
+		txtScore.text = "Score: " + score;
+		
 	}
 	
 	// Update is called once per frame
@@ -28,9 +36,10 @@ public class Cat : MonoBehaviour
 			myBody.velocity = new Vector2 (myBody.velocity.x, 9);
 		}
 		if (myBody.transform.position.y < -3) {
-			myBody.position = new Vector2 (5, 1);
+			RestartLevel ();
 		}
 	}
+	
 
 	void FixedUpdate ()
 	{
@@ -53,7 +62,25 @@ public class Cat : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
+	public void Demage ()
 	{
+		health--;
+		if (health < 1) {
+			RestartLevel ();
+		}
+		txtHealth.text = "Health: " + health;
+	}
+	public void CollectCoin ()
+	{
+		score++;
+		txtScore.text = "Score: " + score;
+	}
+
+
+	void RestartLevel ()
+	{
+		myBody.position = new Vector2 (5, 1);
+		health = 3;
+		txtHealth.text = "Health: " + health;
 	}
 }
