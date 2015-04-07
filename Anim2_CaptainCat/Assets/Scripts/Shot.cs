@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Shot : MonoBehaviour
 {
-	private float distance = 0;
 	private Vector3 startPoint;
 
 	void Start ()

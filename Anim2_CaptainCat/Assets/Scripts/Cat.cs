@@ -13,24 +13,27 @@ public class Cat : MonoBehaviour
 	Animator myAnim;
 	bool directionR = true;
 
-	public int health = 3;
+
 	public Text txtHealth;
-	public int score = 0;
 	public Text txtScore;
+
+	private Vector3 cameraOffset;
+	
 
 	// Use this for initialization
 	void Start ()
 	{
 		myBody = GetComponent<Rigidbody2D> ();
 		myAnim = GetComponent<Animator> ();
-		txtHealth.text = "Health: " + health;
-		txtScore.text = "Score: " + score;
-		
+		txtHealth.text = "Health: " + GameController.Health;
+		txtScore.text = "Score: " + GameController.Score;
+		cameraOffset = Camera.main.transform.position - transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		Camera.main.transform.position = transform.position + cameraOffset;
 		if (onGround && Input.GetKeyDown (KeyCode.Space)) {
 			onGround = false;
 			myBody.velocity = new Vector2 (myBody.velocity.x, 9);
@@ -39,7 +42,6 @@ public class Cat : MonoBehaviour
 			RestartLevel ();
 		}
 	}
-	
 
 	void FixedUpdate ()
 	{
@@ -64,23 +66,31 @@ public class Cat : MonoBehaviour
 
 	public void Demage ()
 	{
-		health--;
-		if (health < 1) {
+		GameController.Health--;
+		if (GameController.Health < 1) {
 			RestartLevel ();
 		}
-		txtHealth.text = "Health: " + health;
+		txtHealth.text = "Health: " + GameController.Health;
 	}
 	public void CollectCoin ()
 	{
-		score++;
-		txtScore.text = "Score: " + score;
+		GameController.Score++;
+		txtScore.text = "Score: " + GameController.Score;
 	}
 
 
 	void RestartLevel ()
 	{
-		myBody.position = new Vector2 (5, 1);
-		health = 3;
-		txtHealth.text = "Health: " + health;
+		GameController.Health = 3;
+		Application.LoadLevel (0);
+	}
+
+	void OnTriggerStay2D (Collider2D other)
+	{
+		
+		if (other.tag == "Door") {
+			if (Input.GetKeyDown (KeyCode.Return))
+				Application.LoadLevel (other.GetComponent<Door> ().toLevelNum);
+		}
 	}
 }
