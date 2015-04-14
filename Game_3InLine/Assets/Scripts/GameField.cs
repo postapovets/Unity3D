@@ -8,6 +8,8 @@ public class GameField : MonoBehaviour
 	public int dimX;
 	public int dimY;
 	public GameObject perfabCircle;
+	public GameObject prefabWick;
+	GameObject wick;
 	public Color[] colors = {Color.white, Color.green, Color.red, Color.yellow, Color.cyan};
 	public float AnimationSpeed = 1;
 
@@ -36,17 +38,18 @@ public class GameField : MonoBehaviour
 			if (Physics.Raycast (ray, out hit, 100f)) {
 				if (hit.collider.tag == "circle") {
 					if (selected1 == hit.collider.gameObject) {
-						iTween.Stop (selected1);
+						stopAnimation ();
 						selected1 = null;
 						return;
 					}
 					if (selected1 == null) {
-						selected1 = hit.collider.gameObject;                                          
+						selected1 = hit.collider.gameObject;  
+						wick = (GameObject)Instantiate (prefabWick, selected1.transform.position, Quaternion.identity);
 						iTween.RotateAdd (selected1, iTween.Hash ("x", 360, "time", AnimationSpeed * 4, "looptype", iTween.LoopType.loop, "easetype", iTween.EaseType.linear));
 					} else {
 						if (Vector3.Distance (selected1.transform.position, hit.collider.transform.position) == 1) {
 							// stop rotating animation
-							iTween.Stop (selected1);
+							stopAnimation ();
 
 							Vector3[] path = new Vector3[] {
 							new Vector3 (selected1.transform.position.x, selected1.transform.position.y, selected1.transform.position.z - 1),
@@ -68,7 +71,7 @@ public class GameField : MonoBehaviour
 								}
 							}
 						} else {
-							iTween.Stop (selected1);
+							stopAnimation ();
 							selected1 = null;
 						}
 						selected1 = null;
@@ -81,7 +84,10 @@ public class GameField : MonoBehaviour
 
 	void stopAnimation ()
 	{
-		//	iTween.Stop (gameObject, true);
+		if (selected1 != null)
+			iTween.Stop (selected1);
+		if (wick != null)
+			Destroy (wick);
 	}
 
 	void SelectForDrop ()

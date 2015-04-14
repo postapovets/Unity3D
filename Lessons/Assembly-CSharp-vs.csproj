@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BallNavigation.cs" />
      <Compile Include="Assets\Scripts\CoinMovement.cs" />
      <Compile Include="Assets\Scripts\LightMoving.cs" />
+     <Compile Include="Assets\Scripts\OnClickExplode.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
