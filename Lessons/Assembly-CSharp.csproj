@@ -49,7 +49,12 @@
      <Compile Include="Assets\Scripts\BallNavigation.cs" />
      <Compile Include="Assets\Scripts\CoinMovement.cs" />
      <Compile Include="Assets\Scripts\LightMoving.cs" />
-     <Compile Include="Assets\Scripts\OnClickExplode.cs" />
+     <Compile Include="Assets\Scripts\Particles\BoxHealth.cs" />
+     <Compile Include="Assets\Scripts\Particles\Explosion.cs" />
+     <Compile Include="Assets\Scripts\Particles\OnClickExplode.cs" />
+     <Compile Include="Assets\Scripts\Particles\ParticleDemage.cs" />
+     <Compile Include="Assets\Scripts\Particles\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\Particles\onCameraClick.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
