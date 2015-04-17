@@ -49,6 +49,8 @@
      <Compile Include="Assets\Scripts\BallNavigation.cs" />
      <Compile Include="Assets\Scripts\CoinMovement.cs" />
      <Compile Include="Assets\Scripts\LightMoving.cs" />
+     <Compile Include="Assets\Scripts\MazeAlarm\BlinkLight.cs" />
+     <Compile Include="Assets\Scripts\MazeAlarm\Detector.cs" />
      <Compile Include="Assets\Scripts\Particles\BoxHealth.cs" />
      <Compile Include="Assets\Scripts\Particles\Explosion.cs" />
      <Compile Include="Assets\Scripts\Particles\OnClickExplode.cs" />
