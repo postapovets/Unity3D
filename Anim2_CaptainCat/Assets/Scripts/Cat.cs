@@ -12,8 +12,7 @@ public class Cat : MonoBehaviour
 	Rigidbody2D myBody;
 	Animator myAnim;
 	bool directionR = true;
-
-
+	
 	public Text txtHealth;
 	public Text txtScore;
 
@@ -25,8 +24,8 @@ public class Cat : MonoBehaviour
 	{
 		myBody = GetComponent<Rigidbody2D> ();
 		myAnim = GetComponent<Animator> ();
-		txtHealth.text = "Health: " + GameController.Health;
-		txtScore.text = "Score: " + GameController.Score;
+		txtHealth.text = "Health: " + CatScore.catObj.Health;
+		txtScore.text = "Score: " + CatScore.catObj.Score;
 		cameraOffset = Camera.main.transform.position - transform.position;
 	}
 	
@@ -66,22 +65,22 @@ public class Cat : MonoBehaviour
 
 	public void Demage ()
 	{
-		GameController.Health--;
-		if (GameController.Health < 1) {
+		CatScore.catObj.Health--;
+		if (CatScore.catObj.Health < 1) {
 			RestartLevel ();
 		}
-		txtHealth.text = "Health: " + GameController.Health;
+		txtHealth.text = "Health: " + CatScore.catObj.Health;
 	}
 	public void CollectCoin ()
 	{
-		GameController.Score++;
-		txtScore.text = "Score: " + GameController.Score;
+		CatScore.catObj.Score++;
+		txtScore.text = "Score: " + CatScore.catObj.Score;
 	}
 
 
 	void RestartLevel ()
 	{
-		GameController.Health = 3;
+		CatScore.catObj.Health = 3;
 		Application.LoadLevel (0);
 	}
 

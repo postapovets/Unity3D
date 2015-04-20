@@ -57,6 +57,9 @@
      <Compile Include="Assets\Scripts\Particles\ParticleDemage.cs" />
      <Compile Include="Assets\Scripts\Particles\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Particles\onCameraClick.cs" />
+     <Compile Include="Assets\Scripts\Patters\Singletone1.cs" />
+     <Compile Include="Assets\Scripts\Patters\singlObj.cs" />
+     <Compile Include="Assets\Scripts\Patters\singlTxt.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
