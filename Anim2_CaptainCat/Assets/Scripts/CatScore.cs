@@ -5,6 +5,7 @@ public class CatScore : MonoBehaviour
 {
 	public int Health = 3;
 	public int Score = 0;
+	public int LevelNo = 0;
 
 	private static CatScore _catObj;
 	public static CatScore catObj {

@@ -12,9 +12,6 @@ public class Cat : MonoBehaviour
 	Rigidbody2D myBody;
 	Animator myAnim;
 	bool directionR = true;
-	
-	public Text txtHealth;
-	public Text txtScore;
 
 	private Vector3 cameraOffset;
 	
@@ -24,8 +21,6 @@ public class Cat : MonoBehaviour
 	{
 		myBody = GetComponent<Rigidbody2D> ();
 		myAnim = GetComponent<Animator> ();
-		txtHealth.text = "Health: " + CatScore.catObj.Health;
-		txtScore.text = "Score: " + CatScore.catObj.Score;
 		cameraOffset = Camera.main.transform.position - transform.position;
 	}
 	
@@ -69,12 +64,10 @@ public class Cat : MonoBehaviour
 		if (CatScore.catObj.Health < 1) {
 			RestartLevel ();
 		}
-		txtHealth.text = "Health: " + CatScore.catObj.Health;
 	}
 	public void CollectCoin ()
 	{
 		CatScore.catObj.Score++;
-		txtScore.text = "Score: " + CatScore.catObj.Score;
 	}
 
 
@@ -88,8 +81,10 @@ public class Cat : MonoBehaviour
 	{
 		
 		if (other.tag == "Door") {
-			if (Input.GetKeyDown (KeyCode.Return))
-				Application.LoadLevel (other.GetComponent<Door> ().toLevelNum);
+			if (Input.GetKeyDown (KeyCode.Return)) {
+				CatScore.catObj.LevelNo = other.GetComponent<Door> ().toLevelNum;
+				Application.LoadLevel (CatScore.catObj.LevelNo);
+			}
 		}
 	}
 }
