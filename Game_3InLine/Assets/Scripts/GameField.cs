@@ -45,6 +45,7 @@ public class GameField : MonoBehaviour
 					if (selected1 == null) {
 						selected1 = hit.collider.gameObject;  
 						wick = (GameObject)Instantiate (prefabWick, selected1.transform.position, Quaternion.identity);
+						wick.GetComponent<ParticleSystem> ().startColor = selected1.GetComponent<MeshRenderer> ().material.color;
 						iTween.RotateAdd (selected1, iTween.Hash ("x", 360, "time", AnimationSpeed * 4, "looptype", iTween.LoopType.loop, "easetype", iTween.EaseType.linear));
 					} else {
 						if (Vector3.Distance (selected1.transform.position, hit.collider.transform.position) == 1) {
