@@ -1,6 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="C:\Users\Public\Documents\Unity Projects\Standard Assets Example Project\Assets\Chickens Shader Bundle\Shaders\CSB_SHLightHelper.cs">
+    <Files>
+      <File FileName="C:\Users\Public\Documents\Unity Projects\Standard Assets Example Project\Assets\Chickens Shader Bundle\Shaders\CSB_SHLightHelper.cs" Line="127" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

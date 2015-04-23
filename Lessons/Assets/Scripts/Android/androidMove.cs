@@ -20,6 +20,7 @@ public class androidMove : MonoBehaviour
 	void Start ()
 	{
 		myBody = GetComponent<Rigidbody> ();
+		Camera.main.transform.localPosition = Vector3.Lerp (zoomMin, zoomMax, t);
 	}
 	
 	void FixedUpdate ()
@@ -27,12 +28,12 @@ public class androidMove : MonoBehaviour
 		camDir.transform.position = transform.position;
 		Vector3 accel = Input.acceleration;
 
-		myBody.AddForce (camDir.transform.TransformDirection (accel.x * 40, 0, (accel.y + 0.6f) * 60));
+		myBody.AddForce (camDir.transform.TransformDirection (accel.x * 40, 0, (accel.y + 0.0f) * 60));
 		// Camera moving
 		if (Input.touchCount == 1) {
 			if (Input.GetTouch (0).phase == TouchPhase.Moved) {
-				camDir.transform.Rotate (0, Input.GetTouch (0).deltaPosition.x, 0, Space.World);
-				camRot.transform.Rotate (Input.GetTouch (0).deltaPosition.y, 0, 0, Space.Self);
+				camDir.transform.Rotate (0, Input.GetTouch (0).deltaPosition.x * 0.5f, 0, Space.World);
+				camRot.transform.Rotate (-Input.GetTouch (0).deltaPosition.y * 0.5f, 0, 0, Space.Self);
 			}
 		}
 
@@ -43,10 +44,10 @@ public class androidMove : MonoBehaviour
 					float dist = Vector2.Distance (Input.GetTouch (0).position, Input.GetTouch (1).position);
 
 					if (prevDist > dist) { //zoom out
-						t += dist / prevDist * 0.1f;
+						t += dist / prevDist * 0.05f;
 					}
 					if (prevDist < dist) { //zoom in
-						t -= prevDist / dist * 0.1f;
+						t -= prevDist / dist * 0.05f;
 					}
 					if (t > 1)
 						t = 1f;
