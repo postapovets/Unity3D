@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../ourGame/Assets/Scripts/player/PlayerControl.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Android/androidMove.cs">
     <Files>
-      <File FileName="../../ourGame/Assets/Scripts/player/PlayerControl.cs" Line="30" Column="1" />
+      <File FileName="Assets/Scripts/Android/androidMove.cs" Line="46" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
