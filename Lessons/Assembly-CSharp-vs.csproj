@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Android\androidMove.cs" />
      <Compile Include="Assets\Scripts\BallNavigation.cs" />
      <Compile Include="Assets\Scripts\CoinMovement.cs" />
+     <Compile Include="Assets\Scripts\GUI\GUIMenu.cs" />
      <Compile Include="Assets\Scripts\LightMoving.cs" />
      <Compile Include="Assets\Scripts\MazeAlarm\BlinkLight.cs" />
      <Compile Include="Assets\Scripts\MazeAlarm\Detector.cs" />
