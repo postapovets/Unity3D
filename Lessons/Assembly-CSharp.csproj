@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\addMethodsInput\addMethInput.cs" />
      <Compile Include="Assets\Scripts\myNGUI\btnNGUI.cs" />
      <Compile Include="Assets\Scripts\nullabletypesBox.cs" />
+     <Compile Include="Assets\myUI\myUIMenu.cs" />
      <None Include="Assets\Plugins\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\Plugins\NGUI\ReadMe - 3.6.8.txt" />
      <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
