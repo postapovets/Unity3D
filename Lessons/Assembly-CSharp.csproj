@@ -50,6 +50,11 @@
      <Compile Include="Assets\Scripts\BallNavigation.cs" />
      <Compile Include="Assets\Scripts\CoinMovement.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIMenu.cs" />
+     <Compile Include="Assets\Scripts\KP1\KP1_1.cs" />
+     <Compile Include="Assets\Scripts\KP1\KP1_2.cs" />
+     <Compile Include="Assets\Scripts\KP1\KP1_3.cs" />
+     <Compile Include="Assets\Scripts\KP1\KP1_4_Player.cs" />
+     <Compile Include="Assets\Scripts\KP1\KP1_4_SceneGenerator.cs" />
      <Compile Include="Assets\Scripts\LightMoving.cs" />
      <Compile Include="Assets\Scripts\MazeAlarm\BlinkLight.cs" />
      <Compile Include="Assets\Scripts\MazeAlarm\Detector.cs" />
@@ -72,6 +77,8 @@
      <Compile Include="Assets\Scripts\addMethodsInput\TwoKeysInput.cs" />
      <Compile Include="Assets\Scripts\addMethodsInput\addMethInput.cs" />
      <Compile Include="Assets\Scripts\myNGUI\btnNGUI.cs" />
+     <Compile Include="Assets\Scripts\myUI\moveCursor.cs" />
+     <Compile Include="Assets\Scripts\myUI\moveInv.cs" />
      <Compile Include="Assets\Scripts\nullabletypesBox.cs" />
      <Compile Include="Assets\myUI\myUIMenu.cs" />
      <None Include="Assets\Plugins\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
