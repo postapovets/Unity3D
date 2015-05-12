@@ -46,6 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\JSON\JSON\Editor\JSONChecker.cs" />
+     <Compile Include="Assets\Plugins\JSON\JSON\JSONObject.cs" />
+     <Compile Include="Assets\Plugins\JSON\JSON\JSONTemplates.cs" />
+     <Compile Include="Assets\Plugins\JSON\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Plugins\NGUI\Examples\Scripts\InventorySystem\Editor\InvDatabaseInspector.cs" />
      <Compile Include="Assets\Plugins\NGUI\Examples\Scripts\InventorySystem\Editor\InvFindItem.cs" />
      <Compile Include="Assets\Plugins\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
@@ -325,6 +329,7 @@
      <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+     <None Include="Assets\Plugins\JSON\JSON\readme.txt" />
      <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
      <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
      <None Include="Assets\Plugins\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />

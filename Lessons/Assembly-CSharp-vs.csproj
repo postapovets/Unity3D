@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\MazeAlarm\BlinkLight.cs" />
      <Compile Include="Assets\Scripts\MazeAlarm\Detector.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\MySQLTest\mySQLScene.cs" />
+     <Compile Include="Assets\Scripts\MySQLTest\mySQLTest.cs" />
      <Compile Include="Assets\Scripts\Particles\BoxHealth.cs" />
      <Compile Include="Assets\Scripts\Particles\Explosion.cs" />
      <Compile Include="Assets\Scripts\Particles\OnClickExplode.cs" />
@@ -88,6 +90,7 @@
      <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+     <None Include="Assets\Plugins\JSON\JSON\readme.txt" />
      <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Text 1.shader" />
      <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored 2.shader" />
      <None Include="Assets\Plugins\NGUI\Examples\Shaders\Unlit - Masked Colored.shader" />
