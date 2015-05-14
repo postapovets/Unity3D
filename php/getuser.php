@@ -13,4 +13,5 @@ include_once 'myDB.php';
     }
     
     echo json_encode($rows);
+    
 ?>

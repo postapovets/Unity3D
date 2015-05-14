@@ -20,13 +20,13 @@ public class mySQLScene : MonoBehaviour
 				form.AddField ("posX", child.position.x.ToString ());
 				form.AddField ("posY", child.position.y.ToString ());
 				form.AddField ("posZ", child.position.z.ToString ());
-				www = new WWW ("http://letsplay.16mb.com/Unity3DTest/saveScene.php", form);
+				www = new WWW ("http://letsplay.16mb.com/MySQLTest/saveScene.php", form);
 			}
 		}
 
 		if (Input.GetKeyDown (KeyCode.L)) { // select all records
 			state = 'l';
-			www = new WWW ("http://letsplay.16mb.com/Unity3DTest/loadScene.php");
+			www = new WWW ("http://letsplay.16mb.com/MySQLTest/loadScene.php");
 		}
 
 		// parse results

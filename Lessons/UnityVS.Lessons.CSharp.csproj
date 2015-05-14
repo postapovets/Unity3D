@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\MazeAlarm\BlinkLight.cs" />
     <Compile Include="Assets\Scripts\MazeAlarm\Detector.cs" />
     <Compile Include="Assets\Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Scripts\MySQLTest\mySQLRegister.cs" />
     <Compile Include="Assets\Scripts\MySQLTest\mySQLScene.cs" />
     <Compile Include="Assets\Scripts\MySQLTest\mySQLTest.cs" />
     <Compile Include="Assets\Scripts\Particles\BoxHealth.cs" />
