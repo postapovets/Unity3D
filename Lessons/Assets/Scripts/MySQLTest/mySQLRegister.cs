@@ -55,16 +55,18 @@ public class mySQLRegister : MonoBehaviour
 
 	public void onUserClick (string username)
 	{
-		state = 'd';
-		WWWForm form = new WWWForm ();
-		form.AddField ("login", txtLogin.text);
-		www = new WWW ("http://letsplay.16mb.com/MySQLTest/details.php", form);
+		if (state == ' ') {
+			state = 'd';
+			WWWForm form = new WWWForm ();
+			form.AddField ("login", username);
+			www = new WWW ("http://letsplay.16mb.com/MySQLTest/details.php", form);
+		}
 	}
 
 	void Update ()
 	{
 		// parse results
-		if (www != null && www.isDone && state == 'r') { // register
+		if (state == 'r' && www != null && www.isDone) { // register
 			if (www.error == null) {
 				if (www.text == "Ok") {
 					print ("User registered.");
@@ -75,9 +77,9 @@ public class mySQLRegister : MonoBehaviour
 			state = ' ';
 			www = null;
 		}
-		if (www != null && www.isDone && state == 'l') { // login
+		if (state == 'l' && www != null && www.isDone) { // login
 			if (www.error == null) {
-				if ("Ok".Equals (www.text)) {
+				if (www.text == "Ok") {
 					print ("Login Ok");
 					dlgLogin.SetActive (false);
 					dlgUsers.SetActive (true);
@@ -103,6 +105,25 @@ public class mySQLRegister : MonoBehaviour
 					obj.transform.Find ("Text").GetComponent<Text> ().text = login;
 					obj.GetComponent<Button> ().onClick.AddListener (() => {
 						onUserClick (login);});
+				}
+			}
+			state = ' ';
+			www = null;
+		}
+		if (state == 'd' && www != null && www.isDone) { // view mode
+			if (www.error == null) {
+				for (int i = 0; i < panDetails.transform.childCount; i++) {
+					Destroy (panDetails.transform.GetChild (i).gameObject);
+				}
+				if (www.text != "null") {
+					jsonObj = new JSONObject (www.text);
+					foreach (var json in jsonObj.list) {
+						var data = json.ToDictionary ();
+						GameObject obj = (GameObject)Instantiate (txtItem, Vector3.zero, Quaternion.identity);
+						obj.transform.SetParent (panDetails.transform);
+						string strText = data ["name"].ToString () + ": " + data ["inventcount"];
+						obj.transform.Find ("Text").GetComponent<Text> ().text = strText;
+					}
 				}
 			}
 			state = ' ';
