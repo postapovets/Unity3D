@@ -6,6 +6,9 @@ public class Client: MonoBehaviour
 	public GameObject bal;
 	public Camera cam;				// Силка на нашу камеру 
 	public string nickname = "";
+	bool nicknameSynced = false;
+	char[] mas = new char[50];
+	public int lmas = 0;
 	private Vector3 moveDirection;	// Вектор руху
 	
 	private float speed = 6.0f;		// швидкіст для внутрішніх розрахунків 
@@ -14,6 +17,7 @@ public class Client: MonoBehaviour
 	public float gravity = 20.0f;	// швидкіст падіння
 	public float speedRotate = 4;	// швидкіст повороту
 	public float jumpSpeed = 8;		// висота стрибка
+	public int health = 100; 		// Health
 	
 	// Анімації та їх швидкості
 	public AnimationClip a_Idle;
@@ -41,16 +45,12 @@ public class Client: MonoBehaviour
 	private Vector3 syncEndPosition = Vector3.zero;
 
 	//Змінні для сериалізації (синхронізації)
-	private Quaternion rotStart;	// кут повороту
-	private Quaternion rotEnd;
+	private Quaternion rot;
 	private int numCurAnim;	// номер анімації для сереалізації 0 - стан спокою, 1 - хотьби 2 - бігу, 3 - прижка 
 		
 
 	void Awake ()
 	{
-
-		cam = transform.GetComponentInChildren<Camera> ().GetComponent<Camera> ();
-
 		controller = GetComponent<CharacterController> ();
 			
 		GetComponent<Animation> () [a_Idle.name].speed = a_IdleSpeed;
@@ -71,7 +71,7 @@ public class Client: MonoBehaviour
 	void OnGUI ()
 	{
 		Vector3 screenPos = Camera.main.WorldToScreenPoint (transform.position);
-		GUI.Label (new Rect (screenPos.x - 15, screenPos.y - 15, 120, 30), nickname);
+		GUI.Label (new Rect (screenPos.x, cam.pixelRect.yMax - screenPos.y, 120, 30), nickname + ": " + health);
 	}
 
 	void Update ()
@@ -157,19 +157,39 @@ public class Client: MonoBehaviour
 		// Якщо персонаж наш то відправляємо дані на сервер
 				
 		if (stream.isWriting) {
-			rotEnd = transform.rotation;
+			if (!nicknameSynced) {
+				mas = nickname.ToCharArray ();
+				lmas = nickname.Length;
+				stream.Serialize (ref lmas);
+				for (int i=0; i<lmas; i++) {
+					stream.Serialize (ref mas [i]);
+				}
+				nicknameSynced = true;
+			}
+			rot = transform.rotation;
 			syncPosition = transform.position;
-			
+
 			stream.Serialize (ref syncPosition);
-			stream.Serialize (ref rotEnd);
+			stream.Serialize (ref rot);
 			stream.Serialize (ref numCurAnim);
+			stream.Serialize (ref health);
+			
 		} 
 		// В протилежному випадку, якщо персонаш не наш, то 
 		// читаємо координати з сервера 
 		else {
+			if (nickname == "") { 
+				stream.Serialize (ref lmas);
+				nickname = "";
+				for (int i=0; i<lmas; i++) {
+					stream.Serialize (ref mas [i]);
+					nickname += mas [i];
+				}
+			}
 			stream.Serialize (ref syncPosition);
-			stream.Serialize (ref rotEnd);
+			stream.Serialize (ref rot);
 			stream.Serialize (ref numCurAnim);
+			stream.Serialize (ref health);
 
 			// Визначаємо яку анімацію потрібно відтворити
 			PlayNameAnim ();
@@ -177,6 +197,8 @@ public class Client: MonoBehaviour
 			GetComponent<Animation> ().CrossFade (s_anim);
 				
  
+			transform.rotation = rot;
+
 			// Обчислення інтерполяції			
 			syncTime = 0f;
 			// Час оновлення екрана
@@ -185,7 +207,6 @@ public class Client: MonoBehaviour
  
 			syncStartPosition = transform.position;
 			syncEndPosition = syncPosition;
-			rotStart = transform.rotation;
 		}
 	}
 	
@@ -195,7 +216,6 @@ public class Client: MonoBehaviour
 		syncTime += Time.deltaTime;
 
 		transform.position = Vector3.Lerp (syncStartPosition, syncEndPosition, syncTime / syncDelay);
-		transform.rotation = Quaternion.Lerp (rotStart, rotEnd, syncTime / syncDelay);
 		
 	}
 	
@@ -221,4 +241,6 @@ public class Client: MonoBehaviour
 			break;
 		}
 	}
+
+
 }

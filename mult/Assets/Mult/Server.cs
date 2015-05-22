@@ -78,13 +78,11 @@ public class Server : MonoBehaviour
 		connected = true;
 		// Вимикаємо камеру та аудіо слухача з головної камери
 		GetComponent<Camera> ().enabled = false;
-		GetComponent<Camera> ().gameObject.GetComponent<AudioListener> ().enabled = false;
 		// Створюємо гравця використовуючи клас Network 
 		// для забезпечення подальшої синхронізації в мультиплеєрі
 		_go = (GameObject)Network.Instantiate (PlayerPrefab, transform.position, transform.rotation, 1);
 		// Вмикаємо камеру та аудіо слухача для нашого персонажа
 		_go.transform.GetComponentInChildren<Camera> ().GetComponent<Camera> ().enabled = true;
-		_go.transform.GetComponentInChildren<AudioListener> ().enabled = true;
 		_go.GetComponent<Client> ().nickname = nickname;
 	}
 	

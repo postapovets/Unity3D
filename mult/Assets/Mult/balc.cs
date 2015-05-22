@@ -43,4 +43,12 @@ public class balc : MonoBehaviour
 
 		}
 	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "Player") {
+			other.GetComponent<Client> ().health -= 20;
+//			Network.Destroy (gameObject);
+		}
+	}
 }
