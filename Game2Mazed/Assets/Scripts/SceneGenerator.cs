@@ -55,14 +55,14 @@ public class SceneGenerator : MonoBehaviour
 	void ClearLevel ()
 	{
 
-		foreach (Transform child in transform.root.Find("/Walls").transform) {
-			Destroy (child.gameObject);
+        foreach (Transform child in transform.root.Find ("/Walls").transform) {
+            Destroy (child.gameObject);
 		}
-		foreach (Transform child in transform.root.Find("/Furniture").transform) {
-			Destroy (child.gameObject);
+        foreach (Transform child in transform.root.Find ("/Furniture").transform) {
+            Destroy (child.gameObject);
 		}
-		foreach (Transform child in transform.root.Find("/Aliens").transform) {
-			Destroy (child.gameObject);
+        foreach (Transform child in transform.root.Find ("/Aliens").transform) {
+            Destroy (child.gameObject);
 		}
 	}
 

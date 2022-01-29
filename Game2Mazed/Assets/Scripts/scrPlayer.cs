@@ -41,14 +41,21 @@ public class scrPlayer : MonoBehaviour
 	{
 		if (Mathf.Abs (Input.GetAxis ("Vertical")) > 0) {
 			myBody.velocity = new Vector2 (myBody.velocity.x, Input.GetAxis ("Vertical") * speed);
+		} else if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0) {
+			myBody.velocity = new Vector2 (Input.GetAxis ("Horizontal") * speed * inverseMoving, myBody.velocity.y);
+		}
+	}
+
+    void Update ()
+    {
+		if (Mathf.Abs (Input.GetAxis ("Vertical")) > 0) {
 			if (Input.GetAxis ("Vertical") > 0) {
 				shotDirection = new Vector2 (0, 1f);
 			} else {
 				shotDirection = new Vector2 (0, -1f);
 			}
 		}
-		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0) {
-			myBody.velocity = new Vector2 (Input.GetAxis ("Horizontal") * speed * inverseMoving, myBody.velocity.y);
+		else if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0) {
 			if (Input.GetAxis ("Horizontal") < 0) {
 				myBody.transform.rotation = rightMove;
 				shotDirection = new Vector2 (-1f * inverseMoving, 0);
